@@ -1,0 +1,194 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    direction: rtl;
+}
+/* @media screen and (max-width: 768px) {
+
+body{
+    background-color: gainsboro;
+
+}
+
+.content{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+.parent{
+    width: 40%;
+    height: 700px;
+    margin:10px ;
+    border: 0.5px solid gainsboro;
+    border-radius: 12px;
+    background-color: white;
+    padding: 12px  18px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.perimage{
+    position: relative;
+}
+.perimage img{
+    width: 100px;
+    height: 100px;
+    border-radius: 2px;
+}
+.perimage .title{
+    position: absolute;
+    left: 90px;
+    font-size: 50px;
+    top: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+}
+.div1 span{
+    font-size: 20px;
+    color: rgb(74, 43, 98);
+}
+.div1 input{
+    min-width: 200px;
+    height: 40px;
+    padding: 15px 15px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+}
+body{
+    background-color: gainsboro;
+
+}
+
+.content{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+.parent{
+    width: 40%;
+    height: 700px;
+    margin:10px ;
+    border: 0.5px solid gainsboro;
+    border-radius: 12px;
+    background-color: white;
+    padding: 12px  18px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+}
+.perimage{
+    position: relative;
+}
+.perimage img{
+    width: 100px;
+    height: 100px;
+    border-radius: 2px;
+}
+.perimage .title{
+    position: absolute;
+    left: 90px;
+    font-size: 50px;
+    top: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+}
+.div1 span{
+    font-size: 20px;
+    color: rgb(74, 43, 98);
+}
+.div1 input{
+    min-width: 200px;
+    height: 40px;
+    padding: 15px 15px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+} */
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    direction: rtl;
+}
+
+body {
+    background-color: gainsboro;
+}
+
+.content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.parent {
+    width: 40%;
+    height: 700px;
+    margin: 10px auto;
+    border: 0.5px solid gainsboro;
+    border-radius: 12px;
+    background-color: white;
+    padding: 12px 18px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+}
+
+.perimage {
+    position: relative;
+}
+
+.perimage img {
+    width: 100px;
+    height: 100px;
+    border-radius: 2px;
+}
+
+.div1 span {
+    font-size: 20px;
+    color: rgb(74, 43, 98);
+}
+
+.div1 input {
+    min-width: 200px;
+    height: 40px;
+    padding: 15px 15px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 📱 تعديلات الموبايل */
+@media screen and (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .parent {
+        width: 90%;
+        height: auto;
+    }
+
+    .div1 input {
+        width: 100%;
+        min-width: auto;
+    }
+}

@@ -46,3 +46,9 @@
       alert(verses[randomIndex]);
     }
   showRandomVerse() 
+var inputs = document.getElementsByTagName("input");
+
+// نعمل لوب على كل input
+for (var i = 0; i < inputs.length; i++) {
+  inputs[i].readOnly = true;
+}

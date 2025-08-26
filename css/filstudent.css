@@ -1,190 +1,67 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-html{
-    direction: rtl;
-}
-/* @media screen and (max-width: 768px) {
-
-body{
-    background-color: gainsboro;
-
-}
-
-.content{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-}
-.parent{
-    width: 40%;
-    height: 700px;
-    margin:10px ;
-    border: 0.5px solid gainsboro;
-    border-radius: 12px;
-    background-color: white;
-    padding: 12px  18px;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-around;
-    align-items: center;
-}
-.perimage{
-    position: relative;
-}
-.perimage img{
-    width: 100px;
-    height: 100px;
-    border-radius: 2px;
-}
-.perimage .title{
-    position: absolute;
-    left: 90px;
-    font-size: 50px;
-    top: 20px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    word-spacing: 3px;
-}
-.div1 span{
-    font-size: 20px;
-    color: rgb(74, 43, 98);
-}
-.div1 input{
-    min-width: 200px;
-    height: 40px;
-    padding: 15px 15px;
-    border-radius: 5px;
-    outline: none;
-    font-size: 18px;
-    font-weight: bold;
-}
-}
-body{
-    background-color: gainsboro;
-
-}
-
-.content{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-}
-.parent{
-    width: 40%;
-    height: 700px;
-    margin:10px ;
-    border: 0.5px solid gainsboro;
-    border-radius: 12px;
-    background-color: white;
-    padding: 12px  18px;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-around;
-}
-.perimage{
-    position: relative;
-}
-.perimage img{
-    width: 100px;
-    height: 100px;
-    border-radius: 2px;
-}
-.perimage .title{
-    position: absolute;
-    left: 90px;
-    font-size: 50px;
-    top: 20px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    word-spacing: 3px;
-}
-.div1 span{
-    font-size: 20px;
-    color: rgb(74, 43, 98);
-}
-.div1 input{
-    min-width: 200px;
-    height: 40px;
-    padding: 15px 15px;
-    border-radius: 5px;
-    outline: none;
-    font-size: 18px;
-    font-weight: bold;
-} */
-
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    direction: rtl;
-}
-
 body {
-    background-color: gainsboro;
-}
-
-.content {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
+    background: linear-gradient(135deg, #f0f8ff, #e6f7ff); /* خلفية متدرجة أزرق فاتح */
+    font-family: "Changa", sans-serif;
+    direction: rtl;
 }
 
 .parent {
     width: 40%;
     height: 700px;
-    margin: 10px auto;
-    border: 0.5px solid gainsboro;
-    border-radius: 12px;
-    background-color: white;
-    padding: 12px 18px;
+    margin: 20px auto;
+    border: 1px solid #d1d9e6;
+    border-radius: 20px;
+    background: #ffffff;
+    padding: 20px 25px;
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-.perimage {
-    position: relative;
+.parent:hover {
+    transform: scale(1.02); /* حركة خفيفة عند المرور */
 }
 
 .perimage img {
-    width: 100px;
-    height: 100px;
-    border-radius: 2px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #2e8b57; /* أخضر مبهج */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .div1 span {
     font-size: 20px;
-    color: rgb(74, 43, 98);
+    color: #2e4a7d; /* أزرق داكن */
+    font-weight: bold;
 }
 
 .div1 input {
     min-width: 200px;
     height: 40px;
-    padding: 15px 15px;
-    border-radius: 5px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 1px solid #c0c0c0;
     outline: none;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: normal;
+    background-color: #f9fcff;
+    transition: 0.3s;
+}
+
+.div1 input:focus {
+    border-color: #2e8b57;
+    background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(46, 139, 87, 0.3);
 }
 
 /* 📱 تعديلات الموبايل */
 @media screen and (max-width: 768px) {
-    .content {
-        flex-direction: column;
-        align-items: center;
-    }
-
     .parent {
         width: 90%;
         height: auto;
+        padding: 15px;
     }
 
     .div1 input {

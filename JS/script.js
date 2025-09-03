@@ -55,7 +55,7 @@ for (var i = 0; i < inputs.length; i++) {
 var spans = document.querySelectorAll("div span");
 
 // القيمة اللي هتدور عليها
-var oldText = " السنة الدراسية : ";
+var oldText = "السنة الدرسية :";
 // القيمة الجديدة اللي هتتكتب مكانها
 var newText = " السنة الدراسية : ";
 

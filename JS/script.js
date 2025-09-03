@@ -52,12 +52,18 @@ var inputs = document.getElementsByTagName("input");
 for (var i = 0; i < inputs.length; i++) {
   inputs[i].readOnly = true;
 }
-var spans = document.querySelectorAll("div span")
-spans.forEach(function (item) {
-  if(item.innerHTML = "السنة الدرسية :"){
-    item.innerHTML="السنة الدراسية :"
-  }
-})
+var spans = document.querySelectorAll("div span");
+
+// القيمة اللي هتدور عليها
+var oldText = " السنة الدراسية : ";
+// القيمة الجديدة اللي هتتكتب مكانها
+var newText = " السنة الدراسية : ";
+
+spans.forEach(function(item) {
+    if (item.innerText.includes(oldText)) {
+        item.innerText = newText;
+    }
+});
 // function edit(){
 //   if(year.innerHTML = "")
 // }

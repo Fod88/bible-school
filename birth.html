@@ -12,18 +12,19 @@
       font-family: 'Pacifico', cursive;
       text-align: center;
     }
-    #btn1{
-      width: 70px;
-      height: 30px;
-      position: absolute;
-      top: 350px;
-      right: 10px;
-      border: 1px solid white;
-      border-radius: 5px;
-      color: white;
-      background-color: rgba(0, 0, 0, 0);
-      display: none;
 
+    #btn1 {
+      width: 80px;
+      height: 35px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: 1px solid white;
+      border-radius: 8px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      display: none;
     }
 
     /* ====== النص ====== */
@@ -47,26 +48,9 @@
       border-radius: 20px;
     }
 
-    #cake1 {
-      width: 250px;
-      height: 80px;
-      background: #ff6699;
-      top: -200px;
-    }
-
-    #cake2 {
-      width: 200px;
-      height: 70px;
-      background: #ff99cc;
-      top: -200px;
-    }
-
-    #cake3 {
-      width: 150px;
-      height: 60px;
-      background: #ffb3d9;
-      top: -200px;
-    }
+    #cake1 { width: 250px; height: 80px; background: #ff6699; top: -200px; }
+    #cake2 { width: 200px; height: 70px; background: #ff99cc; top: -200px; }
+    #cake3 { width: 150px; height: 60px; background: #ffb3d9; top: -200px; }
 
     /* ====== الشمعة ====== */
     #candle {
@@ -147,24 +131,51 @@
       z-index: -1;
     }
 
-    /* ====== MEDIA QUERY ====== */
+    /* ====== MEDIA QUERY للموبايل ====== */
     @media (max-width: 600px) {
-      #message {
-        font-size: 32px;
-        bottom: 20px;
+      body {
+        overflow-x: hidden;
       }
 
-      #cake1 { width: 180px; height: 60px; }
-      #cake2 { width: 140px; height: 50px; }
-      #cake3 { width: 100px; height: 40px; }
-      #candle { width: 10px; height: 35px; }
-      #flame { width: 15px; height: 20px; }
+      #message {
+        font-size: 22px;
+        bottom: 15px;
+        padding: 0 10px;
+      }
+
+      /* التورتة */
+      #cake1 { width: 150px; height: 50px; top: -200px; }
+      #cake2 { width: 120px; height: 40px; top: -200px; }
+      #cake3 { width: 90px; height: 30px; top: -200px; }
+
+      /* الشمعة */
+      #candle { width: 8px; height: 25px; top: -200px; }
+      #flame { width: 12px; height: 16px; top: -240px; }
+
+      /* زرار الخروج */
+      #btn1 {
+        width: 70px;
+        height: 30px;
+        font-size: 12px;
+        top: 10px;
+        right: 10px;
+      }
+
+      /* البلونات */
+      .balloon {
+        width: 30px;
+        height: 45px;
+      }
+      .balloon::after {
+        height: 30px;
+      }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
   <button id="btn1">Out</button>
+
   <!-- التورتة -->
   <div id="cake1" class="cake-part"></div>
   <div id="cake2" class="cake-part"></div>
@@ -199,20 +210,9 @@
     const candle = document.getElementById("candle");
     const flame = document.getElementById("flame");
 
-    setTimeout(() => {
-      cake1.style.top = "400px";
-      cake1.style.opacity = "1";
-    }, 1000);
-
-    setTimeout(() => {
-      cake2.style.top = "340px";
-      cake2.style.opacity = "1";
-    }, 2000);
-
-    setTimeout(() => {
-      cake3.style.top = "290px";
-      cake3.style.opacity = "1";
-    }, 3000);
+    setTimeout(() => { cake1.style.top = "400px"; cake1.style.opacity = "1"; }, 1000);
+    setTimeout(() => { cake2.style.top = "340px"; cake2.style.opacity = "1"; }, 2000);
+    setTimeout(() => { cake3.style.top = "290px"; cake3.style.opacity = "1"; }, 3000);
 
     setTimeout(() => {
       candle.style.top = "230px";
@@ -224,8 +224,13 @@
     // ====== الألعاب النارية ======
     const canvas = document.getElementById("fireworks");
     const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
 
     let particles = [];
 
@@ -263,7 +268,9 @@
     // ====== كتابة النص ======
     const msg = "🎉 Happy Birthday Magy 🎉";
     const messageEl = document.getElementById("message");
+
     setTimeout(() => {
+      messageEl.textContent = "";
       messageEl.style.display = "block";
       let i = 0;
       let interval = setInterval(() => {
@@ -272,13 +279,13 @@
         if (i >= msg.length) clearInterval(interval);
       }, 200);
     }, 5000);
-    var btn = document.getElementById("btn1")
-    var exit = setTimeout(function (){
-      btn.style.display = "block"
-    }, 20000)
-    btn.onclick = function (){
-      location.assign("https://fod88.github.io/bible-school/doctor.html")
-    }
+
+    // ====== زر الخروج ======
+    const btn = document.getElementById("btn1");
+    setTimeout(() => { btn.style.display = "block"; }, 20000);
+    btn.onclick = () => {
+      location.href = "https://fod88.github.io/bible-school/doctor.html";
+    };
   </script>
 </body>
 </html>

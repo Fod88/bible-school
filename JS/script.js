@@ -64,6 +64,3 @@ spans.forEach(function(item) {
         item.innerText = newText;
     }
 });
-// function edit(){
-//   if(year.innerHTML = "")
-// }

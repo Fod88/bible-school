@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بحث عن طالب</title>
+  <style>
+    body{
+      font-family: "Changa", sans-serif;
+      background:#f9f9f9;
+      padding:30px;
+    }
+    input{
+      padding:10px;
+      width:300px;
+      border:1px solid #ccc;
+      border-radius:5px;
+    }
+    .result{
+      margin-top:20px;
+      font-size:18px;
+      color:#333;
+    }
+    .highlight{
+      background:yellow;
+      font-weight:bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔍 ابحث عن اسم الطالب</h2>
+  <input type="text" id="searchInput" placeholder="اكتب اسم الطالب...">
+  <div class="result" id="result"></div>
+
+  <script>
+    // بيانات الطلاب (بدل ما تكون صفحات منفصلة)
+    let students = [
+      {id:48, name:"مريم مجدى حبيب فهمى", birth:"01/07/2014"},
+      {id:49, name:"فادى عاطف نادى", birth:"22/11/2000"},
+      {id:50, name:"مينا جورج", birth:"05/05/2012"}
+    ];
+
+    let input = document.getElementById("searchInput");
+    let result = document.getElementById("result");
+
+    input.addEventListener("keyup", function(){
+      let query = input.value.trim();
+      if(query === ""){
+        result.innerHTML = "";
+        return;
+      }
+
+      // البحث
+      let found = students.filter(s => s.name.includes(query));
+
+      if(found.length > 0){
+        result.innerHTML = found.map(s => {
+          // عمل هايلايت على الجزء اللي اتكتب
+          let highlighted = s.name.replace(query, `<span class="highlight">${query}</span>`);
+          return `<p>✅ ${highlighted} (ID: ${s.id})</p>`;
+        }).join("");
+      } else {
+        result.innerHTML = "<p>❌ NOT FOUND</p>";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -119,3 +119,44 @@ header{
         margin: 5px 10px;
     }
 }
+.room {
+  position: relative;
+  height: 100vh;
+  background: #222;
+}
+
+.lamp {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  width: 40px;
+  height: 80px;
+  background: yellow;
+  border-radius: 50%;
+  box-shadow: 0 0 30px yellow;
+}
+
+.rope {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  width: 4px;
+  height: 80px;
+  background: #555;
+  cursor: pointer;
+}
+
+.door {
+  position: absolute;
+  right: 100px;
+  bottom: 0;
+  width: 120px;
+  height: 250px;
+  background: brown;
+  transition: transform 1s;
+  transform-origin: right center;
+}
+
+.door.open {
+  transform: rotateY(-100deg);
+}

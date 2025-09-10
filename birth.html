@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: pink;
+      overflow: hidden;
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+    }
+    #btn1{
+      width: 70px;
+      height: 30px;
+      position: absolute;
+      top: 350px;
+      right: 10px;
+      border: 1px solid white;
+      border-radius: 5px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0);
+      display: none;
+
+    }
+
+    /* ====== النص ====== */
+    #message {
+      position: absolute;
+      bottom: 50px;
+      width: 100%;
+      font-size: 60px;
+      color: white;
+      text-shadow: 0 0 20px purple, 0 0 30px red;
+      display: none;
+    }
+
+    /* ====== التورتة ====== */
+    .cake-part {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: top 1s ease-in, opacity 1s;
+      border-radius: 20px;
+    }
+
+    #cake1 {
+      width: 250px;
+      height: 80px;
+      background: #ff6699;
+      top: -200px;
+    }
+
+    #cake2 {
+      width: 200px;
+      height: 70px;
+      background: #ff99cc;
+      top: -200px;
+    }
+
+    #cake3 {
+      width: 150px;
+      height: 60px;
+      background: #ffb3d9;
+      top: -200px;
+    }
+
+    /* ====== الشمعة ====== */
+    #candle {
+      position: absolute;
+      width: 15px;
+      height: 50px;
+      background: white;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      border-radius: 5px;
+      transition: top 1s ease-in, opacity 1s;
+    }
+
+    #flame {
+      position: absolute;
+      width: 20px;
+      height: 30px;
+      background: orange;
+      border-radius: 50%;
+      top: -240px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      animation: flicker 0.3s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from { transform: translateX(-50%) scale(1); opacity: 0.8; }
+      to   { transform: translateX(-50%) scale(1.1); opacity: 1; }
+    }
+
+    /* ====== البلونات ====== */
+    .balloon-container {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .balloon {
+      width: 50px;
+      height: 70px;
+      border-radius: 50% 50% 50% 50%;
+      position: absolute;
+      bottom: -100px;
+      animation: fly 6s infinite ease-in;
+    }
+
+    .balloon::after {
+      content: "";
+      width: 2px;
+      height: 50px;
+      background: #555;
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .red { background: #ff4d4d; left: -120px; animation-delay: 0s; }
+    .blue { background: #4da6ff; left: -40px; animation-delay: 2s; }
+    .green { background: #4dff88; left: 40px; animation-delay: 4s; }
+    .yellow { background: #ffff4d; left: 120px; animation-delay: 1s; }
+
+    @keyframes fly {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      50% { transform: translateY(-300px) scale(1.1); opacity: 0.9; }
+      100% { transform: translateY(-600px) scale(1.2); opacity: 0; }
+    }
+
+    /* ====== الألعاب النارية ====== */
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    /* ====== MEDIA QUERY ====== */
+    @media (max-width: 600px) {
+      #message {
+        font-size: 32px;
+        bottom: 20px;
+      }
+
+      #cake1 { width: 180px; height: 60px; }
+      #cake2 { width: 140px; height: 50px; }
+      #cake3 { width: 100px; height: 40px; }
+      #candle { width: 10px; height: 35px; }
+      #flame { width: 15px; height: 20px; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+  <button id="btn1">Out</button>
+  <!-- التورتة -->
+  <div id="cake1" class="cake-part"></div>
+  <div id="cake2" class="cake-part"></div>
+  <div id="cake3" class="cake-part"></div>
+  <div id="candle"></div>
+  <div id="flame"></div>
+
+  <!-- النص -->
+  <h1 id="message"></h1>
+
+  <!-- البلونات -->
+  <div class="balloon-container">
+    <div class="balloon red"></div>
+    <div class="balloon blue"></div>
+    <div class="balloon green"></div>
+    <div class="balloon yellow"></div>
+  </div>
+
+  <!-- الألعاب النارية -->
+  <canvas id="fireworks"></canvas>
+
+  <!-- موسيقى -->
+  <audio id="music" autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-buddy.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    // ====== نزول التورتة ======
+    const cake1 = document.getElementById("cake1");
+    const cake2 = document.getElementById("cake2");
+    const cake3 = document.getElementById("cake3");
+    const candle = document.getElementById("candle");
+    const flame = document.getElementById("flame");
+
+    setTimeout(() => {
+      cake1.style.top = "400px";
+      cake1.style.opacity = "1";
+    }, 1000);
+
+    setTimeout(() => {
+      cake2.style.top = "340px";
+      cake2.style.opacity = "1";
+    }, 2000);
+
+    setTimeout(() => {
+      cake3.style.top = "290px";
+      cake3.style.opacity = "1";
+    }, 3000);
+
+    setTimeout(() => {
+      candle.style.top = "230px";
+      candle.style.opacity = "1";
+      flame.style.opacity = "1";
+      flame.style.top = "190px";
+    }, 4000);
+
+    // ====== الألعاب النارية ======
+    const canvas = document.getElementById("fireworks");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+
+    function firework(x, y) {
+      for (let i = 0; i < 80; i++) {
+        let angle = (Math.PI * 2 * i) / 80;
+        let speed = Math.random() * 5 + 2;
+        let dx = Math.cos(angle) * speed;
+        let dy = Math.sin(angle) * speed;
+        let color = `hsl(${Math.random()*360},100%,60%)`;
+        particles.push({ x, y, dx, dy, color, life: 100 });
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p, i) => {
+        p.x += p.dx;
+        p.y += p.dy;
+        p.life--;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 3, 0, Math.PI*2);
+        ctx.fill();
+        if (p.life <= 0) particles.splice(i,1);
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    setInterval(() => {
+      firework(Math.random()*canvas.width, Math.random()*canvas.height/2);
+    }, 2000);
+
+    // ====== كتابة النص ======
+    const msg = "🎉 Happy Birthday Magy 🎉";
+    const messageEl = document.getElementById("message");
+    setTimeout(() => {
+      messageEl.style.display = "block";
+      let i = 0;
+      let interval = setInterval(() => {
+        messageEl.textContent += msg[i];
+        i++;
+        if (i >= msg.length) clearInterval(interval);
+      }, 200);
+    }, 5000);
+    var btn = document.getElementById("btn1")
+    var exit = setTimeout(function (){
+      btn.style.display = "block"
+    }, 20000)
+    btn.onclick = function (){
+      location.assign("https://fod88.github.io/bible-school/doctor.html")
+    }
+  </script>
+</body>
+</html>

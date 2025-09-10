@@ -13,31 +13,6 @@
       text-align: center;
     }
 
-    #btn1 {
-      width: 80px;
-      height: 35px;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      border: 1px solid white;
-      border-radius: 8px;
-      color: white;
-      background-color: rgba(0, 0, 0, 0.4);
-      cursor: pointer;
-      display: none;
-    }
-
-    /* ====== النص ====== */
-    #message {
-      position: absolute;
-      bottom: 50px;
-      width: 100%;
-      font-size: 60px;
-      color: white;
-      text-shadow: 0 0 20px purple, 0 0 30px red;
-      display: none;
-    }
-
     /* ====== التورتة ====== */
     .cake-part {
       position: absolute;
@@ -45,83 +20,100 @@
       transform: translateX(-50%);
       opacity: 0;
       transition: top 1s ease-in, opacity 1s;
-      border-radius: 20px;
+      border-radius: 10px;
     }
 
-    #cake1 { width: 250px; height: 80px; background: #ff6699; top: -200px; }
-    #cake2 { width: 200px; height: 70px; background: #ff99cc; top: -200px; }
-    #cake3 { width: 150px; height: 60px; background: #ffb3d9; top: -200px; }
+    #cake1 { width: 200px; height: 60px; background: #ff4d6d; top: -200px; }
+    #cake2 { width: 160px; height: 50px; background: #ff8095; top: -200px; }
+    #cake3 { width: 120px; height: 40px; background: #ffb3c6; top: -200px; }
 
     /* ====== الشمعة ====== */
     #candle {
       position: absolute;
-      width: 15px;
-      height: 50px;
+      width: 10px;
+      height: 30px;
       background: white;
       top: -200px;
       left: 50%;
       transform: translateX(-50%);
+      border-radius: 3px;
       opacity: 0;
-      border-radius: 5px;
       transition: top 1s ease-in, opacity 1s;
     }
 
     #flame {
       position: absolute;
-      width: 20px;
-      height: 30px;
+      width: 15px;
+      height: 20px;
       background: orange;
       border-radius: 50%;
       top: -240px;
       left: 50%;
       transform: translateX(-50%);
       opacity: 0;
-      animation: flicker 0.3s infinite alternate;
+      animation: flicker 0.5s infinite alternate;
     }
 
     @keyframes flicker {
       from { transform: translateX(-50%) scale(1); opacity: 0.8; }
-      to   { transform: translateX(-50%) scale(1.1); opacity: 1; }
+      to { transform: translateX(-50%) scale(1.2); opacity: 1; }
+    }
+
+    /* ====== الرسالة ====== */
+    #message {
+      position: absolute;
+      width: 100%;
+      bottom: 50px;
+      font-size: 26px;
+      color: white;
+      text-shadow: 2px 2px 6px red;
+      display: none;
+    }
+
+    /* ====== زرار الخروج ====== */
+    #btn1 {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 80px;
+      height: 35px;
+      font-size: 14px;
+      border: none;
+      border-radius: 10px;
+      background: red;
+      color: white;
+      cursor: pointer;
+      display: none;
     }
 
     /* ====== البلونات ====== */
-    .balloon-container {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
     .balloon {
-      width: 50px;
-      height: 70px;
-      border-radius: 50% 50% 50% 50%;
       position: absolute;
       bottom: -100px;
-      animation: fly 6s infinite ease-in;
+      width: 40px;
+      height: 60px;
+      border-radius: 50%;
+      animation: float 6s infinite ease-in;
     }
 
     .balloon::after {
       content: "";
-      width: 2px;
-      height: 50px;
-      background: #555;
       position: absolute;
-      top: 70px;
+      top: 60px;
       left: 50%;
-      transform: translateX(-50%);
+      width: 2px;
+      height: 40px;
+      background: gray;
     }
 
-    .red { background: #ff4d4d; left: -120px; animation-delay: 0s; }
-    .blue { background: #4da6ff; left: -40px; animation-delay: 2s; }
-    .green { background: #4dff88; left: 40px; animation-delay: 4s; }
-    .yellow { background: #ffff4d; left: 120px; animation-delay: 1s; }
-
-    @keyframes fly {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      50% { transform: translateY(-300px) scale(1.1); opacity: 0.9; }
-      100% { transform: translateY(-600px) scale(1.2); opacity: 0; }
+    @keyframes float {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-800px); opacity: 0; }
     }
+
+    .balloon:nth-child(1) { left: 20%; background: red; animation-delay: 0s; }
+    .balloon:nth-child(2) { left: 50%; background: yellow; animation-delay: 2s; }
+    .balloon:nth-child(3) { left: 80%; background: green; animation-delay: 4s; }
 
     /* ====== الألعاب النارية ====== */
     canvas {
@@ -131,51 +123,21 @@
       z-index: -1;
     }
 
-    /* ====== MEDIA QUERY للموبايل ====== */
+    /* ====== MEDIA QUERY ====== */
     @media (max-width: 600px) {
-      body {
-        overflow-x: hidden;
-      }
-
-      #message {
-        font-size: 22px;
-        bottom: 15px;
-        padding: 0 10px;
-      }
-
-      /* التورتة */
-      #cake1 { width: 150px; height: 50px; top: -200px; }
-      #cake2 { width: 120px; height: 40px; top: -200px; }
-      #cake3 { width: 90px; height: 30px; top: -200px; }
-
-      /* الشمعة */
-      #candle { width: 8px; height: 25px; top: -200px; }
-      #flame { width: 12px; height: 16px; top: -240px; }
-
-      /* زرار الخروج */
-      #btn1 {
-        width: 70px;
-        height: 30px;
-        font-size: 12px;
-        top: 10px;
-        right: 10px;
-      }
-
-      /* البلونات */
-      .balloon {
-        width: 30px;
-        height: 45px;
-      }
-      .balloon::after {
-        height: 30px;
-      }
+      #message { font-size: 22px; bottom: 30px; padding: 0 8px; }
+      #cake1 { width: 150px; height: 50px; }
+      #cake2 { width: 120px; height: 40px; }
+      #cake3 { width: 90px; height: 30px; }
+      #candle { width: 8px; height: 25px; }
+      #flame { width: 12px; height: 16px; }
+      #btn1 { width: 70px; height: 30px; font-size: 12px; }
+      .balloon { width: 30px; height: 45px; }
+      .balloon::after { height: 30px; }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
-  <button id="btn1">Out</button>
-
   <!-- التورتة -->
   <div id="cake1" class="cake-part"></div>
   <div id="cake2" class="cake-part"></div>
@@ -183,24 +145,19 @@
   <div id="candle"></div>
   <div id="flame"></div>
 
-  <!-- النص -->
+  <!-- البلونات -->
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+
+  <!-- الرسالة -->
   <h1 id="message"></h1>
 
-  <!-- البلونات -->
-  <div class="balloon-container">
-    <div class="balloon red"></div>
-    <div class="balloon blue"></div>
-    <div class="balloon green"></div>
-    <div class="balloon yellow"></div>
-  </div>
+  <!-- زرار الخروج -->
+  <button id="btn1">Out</button>
 
   <!-- الألعاب النارية -->
   <canvas id="fireworks"></canvas>
-
-  <!-- موسيقى -->
-  <audio id="music" autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-buddy.mp3" type="audio/mp3">
-  </audio>
 
   <script>
     // ====== نزول التورتة ======
@@ -210,28 +167,16 @@
     const candle = document.getElementById("candle");
     const flame = document.getElementById("flame");
 
-    setTimeout(() => { cake1.style.top = "400px"; cake1.style.opacity = "1"; }, 1000);
-    setTimeout(() => { cake2.style.top = "340px"; cake2.style.opacity = "1"; }, 2000);
-    setTimeout(() => { cake3.style.top = "290px"; cake3.style.opacity = "1"; }, 3000);
-
-    setTimeout(() => {
-      candle.style.top = "230px";
-      candle.style.opacity = "1";
-      flame.style.opacity = "1";
-      flame.style.top = "190px";
-    }, 4000);
+    setTimeout(() => { cake1.style.top = "200px"; cake1.style.opacity = "1"; }, 1000);
+    setTimeout(() => { cake2.style.top = "150px"; cake2.style.opacity = "1"; }, 2000);
+    setTimeout(() => { cake3.style.top = "110px"; cake3.style.opacity = "1"; }, 3000);
+    setTimeout(() => { candle.style.top = "70px"; candle.style.opacity = "1"; flame.style.opacity = "1"; flame.style.top = "50px"; }, 4000);
 
     // ====== الألعاب النارية ======
     const canvas = document.getElementById("fireworks");
     const ctx = canvas.getContext("2d");
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     let particles = [];
 
     function firework(x, y) {
@@ -255,12 +200,11 @@
         ctx.beginPath();
         ctx.arc(p.x, p.y, 3, 0, Math.PI*2);
         ctx.fill();
-        if (p.life <= 0) particles.splice(i,1);
+        if (p.life <= 0) particles.splice(i, 1);
       });
       requestAnimationFrame(animate);
     }
     animate();
-
     setInterval(() => {
       firework(Math.random()*canvas.width, Math.random()*canvas.height/2);
     }, 2000);
@@ -268,9 +212,7 @@
     // ====== كتابة النص ======
     const msg = "🎉 Happy Birthday Magy 🎉";
     const messageEl = document.getElementById("message");
-
     setTimeout(() => {
-      messageEl.textContent = "";
       messageEl.style.display = "block";
       let i = 0;
       let interval = setInterval(() => {
@@ -280,12 +222,12 @@
       }, 200);
     }, 5000);
 
-    // ====== زر الخروج ======
-    const btn = document.getElementById("btn1");
+    // ====== إظهار زرار الخروج ======
+    var btn = document.getElementById("btn1");
     setTimeout(() => { btn.style.display = "block"; }, 20000);
-    btn.onclick = () => {
-      location.href = "https://fod88.github.io/bible-school/doctor.html";
-    };
+    btn.onclick = function () {
+      location.assign("https://fod88.github.io/bible-school/doctor.html");
+    }
   </script>
 </body>
 </html>
